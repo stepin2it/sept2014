@@ -18,53 +18,44 @@ public class MyActivity extends Activity {
     private List<User> mUserList = new ArrayList<User>();
     private ListView mListView;
 
-    public class MyCustomAdapter extends ArrayAdapter<Photo>
-    {
+    public class MyCustomAdapter extends ArrayAdapter<Photo> {
 
-        public MyCustomAdapter(Context context, int textViewResourceId,	List<Photo> mListOfPhotos)
-        {
+        public MyCustomAdapter(Context context, int textViewResourceId, List<Photo> mListOfPhotos) {
             super(context, textViewResourceId, mListOfPhotos);
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent) {
             // TODO Fix compile errors in this class
 
             final int rownumber = position;
             View row = convertView;
 
-            if (row == null)
-            {
+            if (row == null) {
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(R.layout.row_users, parent, false);
             }
 
-            row.setOnClickListener(new View.OnClickListener()
-            {
+            row.setOnClickListener(new View.OnClickListener() {
 
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
 
                 }
 
             });
 
 
-
-
             TextView list_name = (TextView) row.findViewById(R.id.list_name);
 
             TextView list_tagline = (TextView) row.findViewById(R.id.list_tagline);
 
-            list_name.setText(mListOfPhotos .get(position).getTitle());
+            list_name.setText(mListOfPhotos.get(position).getTitle());
             list_tagline.setText(content);
 
             int i = 0;
 
             ImageView imageView1 = (ImageView) row.findViewById(R.id.imageView1);
-
 
 
             return row;
@@ -83,8 +74,6 @@ public class MyActivity extends Activity {
         this.populateUserData();
 
         mListView = (ListView) findViewById(R.id.listView);
-
-
 
 
     }

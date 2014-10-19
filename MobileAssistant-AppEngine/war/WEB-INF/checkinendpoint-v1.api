@@ -85,22 +85,6 @@
         "body" : "empty"
       }
     },
-    "checkinendpoint.updateCheckIn" : {
-      "path" : "checkin",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.example.mobileassistant.CheckInEndpoint.updateCheckIn",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "checkinendpoint.listCheckIn" : {
       "path" : "checkin",
       "httpMethod" : "GET",
@@ -121,6 +105,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "checkinendpoint.updateCheckIn" : {
+      "path" : "checkin",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.mobileassistant.CheckInEndpoint.updateCheckIn",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -208,17 +208,17 @@
       },
       "com.example.mobileassistant.CheckInEndpoint.removeCheckIn" : {
       },
+      "com.example.mobileassistant.CheckInEndpoint.listCheckIn" : {
+        "response" : {
+          "$ref" : "CollectionResponse_CheckIn"
+        }
+      },
       "com.example.mobileassistant.CheckInEndpoint.updateCheckIn" : {
         "request" : {
           "$ref" : "CheckIn"
         },
         "response" : {
           "$ref" : "CheckIn"
-        }
-      },
-      "com.example.mobileassistant.CheckInEndpoint.listCheckIn" : {
-        "response" : {
-          "$ref" : "CollectionResponse_CheckIn"
         }
       }
     }

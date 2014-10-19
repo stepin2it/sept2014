@@ -23,9 +23,9 @@ public class ObjectsReader
 
     private static final String TAG = "ObjectsReader";
     
-    private static UsersResponse responseObject = null;
+    private static Users responseObject = null;
    
-    public static UsersResponse readUsersResponse(String jsonFileUrl)
+    public static Users readUsersResponse(String jsonFileUrl)
     {
     	Log.d(TAG, "---------------- JSON URL: " + jsonFileUrl);
         InputStream source = retrieveStream(jsonFileUrl);
@@ -41,7 +41,7 @@ public class ObjectsReader
         Gson gson = new Gson();
         
         Log.d(TAG, "getting TypeToken");
-        Type listType = new TypeToken<UsersResponse>()
+        Type listType = new TypeToken<Users>()
         {
         }.getType();
         

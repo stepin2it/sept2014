@@ -1,64 +1,63 @@
 package com.example.mobileshoppingassistant;
 
+import java.io.Serializable;
+
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by coder on 10/4/14.
  */
-public class User {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String emailAddress;
+public class User implements Serializable{
+	
+
+	@SerializedName("first_name")
+    private String first_name;
+	@SerializedName("last_name")
+    private String last_name;
+	@SerializedName("phone_number")
+    private String phone_number;
+	@SerializedName("email_address")
+    private String email_address;
+	@SerializedName("notes")
     private String notes;
     
-	public User(int id, String firstName, String lastName, String phoneNumber,
+	public User(String firstName, String lastName, String phoneNumber,
 			String emailAddress, String notes) {
 		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.emailAddress = emailAddress;
+		this.first_name = firstName;
+		this.last_name = lastName;
+		this.phone_number = phoneNumber;
+		this.email_address = emailAddress;
 		this.notes = notes;
 	}
-	public User(int id, String firstName, String phoneNumber) {
+	public User(String firstName, String phoneNumber) {
 		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.phoneNumber = phoneNumber;
-	}
-	
-	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+		this.first_name = firstName;
+		this.phone_number = phoneNumber;
 	}
 	public String getFirstName() {
-		return firstName;
+		return first_name;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String first_name) {
+		this.first_name = first_name;
 	}
 	public String getLastName() {
-		return lastName;
+		return last_name;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String last_name) {
+		this.last_name = last_name;
 	}
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return phone_number;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(String phone_number) {
+		this.phone_number = phone_number;
 	}
 	public String getEmailAddress() {
-		return emailAddress;
+		return email_address;
 	}
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmailAddress(String email_address) {
+		this.email_address = email_address;
 	}
 	public String getNotes() {
 		return notes;
@@ -66,13 +65,7 @@ public class User {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", phoneNumber=" + phoneNumber + ", emailAddress="
-				+ emailAddress + ", notes=" + notes + "]";
-	}
-
+	
 	
 	
 	

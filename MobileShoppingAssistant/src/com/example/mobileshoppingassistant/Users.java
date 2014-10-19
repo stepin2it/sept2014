@@ -3,8 +3,10 @@ package com.example.mobileshoppingassistant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersResponse {
-	
+import com.google.gson.annotations.SerializedName;
+
+public class Users {
+	@SerializedName("users")
 	private List<User> users = new ArrayList<User>();
 
 	public List<User> getUsers() {

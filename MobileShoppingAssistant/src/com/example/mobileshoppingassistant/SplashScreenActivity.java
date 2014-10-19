@@ -17,6 +17,7 @@ public class SplashScreenActivity extends Activity{
         setContentView(R.layout.activity_splash_screen);
 
         Button button1 = (Button) findViewById(R.id.button1);
+        Button button2 = (Button) findViewById(R.id.button2);
         ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
         ImageView imageView2 = (ImageView) findViewById(R.id.imageView2);
 
@@ -39,5 +40,15 @@ public class SplashScreenActivity extends Activity{
             }
         });
 
+        
+        button2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(SplashScreenActivity.this, ParserActivity.class);
+				startActivity(intent);
+				
+			}
+		});
     }
 }

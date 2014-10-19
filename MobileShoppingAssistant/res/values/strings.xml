@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="label_robot_1">Robot One</string>
     <string name="label_robot_2">Robot Two</string>
-    <string name="label_button">Click Me</string>
+    <string name="label_button">Go to MainActivity(reads Contacts)</string>
+    <string name="label_button_2">Go to ParserActivity(reads Users)</string>
 </resources>

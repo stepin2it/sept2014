@@ -24,6 +24,8 @@ public class ObjectsReader
     private static final String TAG = "ObjectsReader";
     
     private static Users responseObject = null;
+    
+    List<Contact> retrievedresult = null;
    
     public static Users readUsersResponse(String jsonFileUrl)
     {
@@ -91,5 +93,34 @@ public class ObjectsReader
 
         return null;
 
+    }
+    public List<Contact> readPersons(String jsonFileUrl)
+    {
+
+        InputStream source = retrieveStream(jsonFileUrl);
+
+        Reader reader = new InputStreamReader(source);
+
+        Gson gson = new Gson();
+
+        Type listType = new TypeToken<List<Contact>>()
+        {
+        }.getType();
+
+        retrievedresult = gson.fromJson(reader, listType);
+
+        if (retrievedresult != null)
+        {
+
+            for (Contact res : retrievedresult)
+            {
+                Log.d(TAG, "------------------" + res.getName());
+                Log.d(TAG, "-----------------" + res.getAge());
+
+            }
+
+        }
+
+        return retrievedresult;
     }
 }

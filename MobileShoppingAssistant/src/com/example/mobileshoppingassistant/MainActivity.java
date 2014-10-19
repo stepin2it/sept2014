@@ -31,10 +31,11 @@ public class MainActivity extends Activity {
 	private List<User> mUserList = new ArrayList<User>();
 	private ListView mListView;
 	private Users mUsersResponse;
-	public class MyCustomAdapter extends ArrayAdapter<User> {
+	private List<Contact> mListofcontacts = new ArrayList<Contact>();
+	public class MyCustomAdapter extends ArrayAdapter<Contact> {
 
 		public MyCustomAdapter(Context context, int textViewResourceId,
-				List<User> list) {
+				List<Contact> list) {
 			super(context, textViewResourceId, list);
 		}
 
@@ -64,8 +65,8 @@ public class MainActivity extends Activity {
 			TextView list_tagline = (TextView) row
 					.findViewById(R.id.list_tagline);
 
-			list_name.setText(mUserList.get(position).getFirstName());
-			list_tagline.setText(" " + mUserList.get(position).getPhoneNumber());
+			list_name.setText(mListofcontacts.get(position).getName());
+			list_tagline.setText(" " + mListofcontacts.get(position).getAge());
 
 			int i = 0;
 
@@ -88,9 +89,7 @@ public class MainActivity extends Activity {
 
 		mListView = (ListView) findViewById(R.id.listView);
 		
-		MyCustomAdapter adapter = new MyCustomAdapter(this, 0, mUserList);
-		
-		mListView.setAdapter(adapter);
+
 		
 		// TODO Although the following call to read will work 
 		// PLease try to optimize the code using AsyncTask (refer to developer.android.com) 
@@ -98,8 +97,8 @@ public class MainActivity extends Activity {
 		// DEBUG it so that no exception is thrown
 		//read();
 		
-		Object params = null;
-		new AsyncIO().execute(params);
+		
+		new AsyncIO().execute();
 
 	}
 
@@ -107,23 +106,34 @@ public class MainActivity extends Activity {
 		//String jsonFileUrl = "http://10.96.168.135/users.json";
 //		String jsonFileUrl = "http://169.254.6.143:8080/com.youtube.rest/";
 		// String jsonFileUrl = "http://localhost:8080/com.youtube.rest/api/v1/status/gson";
-		String jsonFileUrl = FeaturesConfiguration.JSON_URL;				
-		mUsersResponse = ObjectsReader.readUsersResponse(jsonFileUrl);
+		// mUsersResponse = ObjectsReader.readUsersResponse(jsonFileUrl);
+		
+		ObjectsReader reader = new ObjectsReader();
+        
+        mListofcontacts = reader.readPersons(FeaturesConfiguration.JSON_URL_2);
 		
 	}
 	private void display() {
-		Log.d(TAG, "usersReponse is not null");
+		Log.d(TAG, "display was called");
+		MyCustomAdapter adapter = new MyCustomAdapter(this, 0, mListofcontacts);
 		
-		for (User u : mUsersResponse.getUsers()) {
-			Log.d(TAG, u.getFirstName());
-			
-		}
+		mListView.setAdapter(adapter);
+
 	}
 	
-	private class AsyncIO extends AsyncTask {
+	private class AsyncIO extends AsyncTask<Void, Void, Void> {
 
+	      @Override
+          protected void onPreExecute() {
+	    	  //TODO 
+          }
+
+          @Override
+          protected void onProgressUpdate(Void... values) {
+        	  //TODO
+          }
 		@Override
-		protected Object doInBackground(Object... arg0) {
+		protected Void doInBackground(Void... params) {
 			//java.lang.System.out.println("url: " +  url);
 			
 			try{
@@ -137,7 +147,7 @@ public class MainActivity extends Activity {
 			
 		}
 		
-		protected void onPostExecute(String results) {
+		 protected void onPostExecute(Void result) {
 			Log.d(TAG, "onPostExecute called");
 			display();
 		
